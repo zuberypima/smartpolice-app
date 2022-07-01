@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           if(snapshot.connectionState ==ConnectionState.done){
             return ReportPage();
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         },
       ),
     );

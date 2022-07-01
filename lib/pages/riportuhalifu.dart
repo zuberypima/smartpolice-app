@@ -1,5 +1,6 @@
 //Page ya mtumiaji kutoa taarifa ya tukio
 import 'package:flutter/material.dart';
+import 'package:reporttopolice/services/postreport.dart';
 
 class RipotiUhalifu extends StatefulWidget {
   const RipotiUhalifu({Key? key}) : super(key: key);
@@ -97,14 +98,19 @@ class _RipotiUhalifuState extends State<RipotiUhalifu> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Center(
-              child: Container(
-                height: 35,
-                width: MediaQuery.of(context).size.width/2,
-                decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.circular(15)),
-                child: Center(child: Text('Tuma',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 20),)),),
+          InkWell(
+            onTap: () {
+              PostRipot().postreport('location', 'maelezo');
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Center(
+                child: Container(
+                  height: 35,
+                  width: MediaQuery.of(context).size.width/2,
+                  decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.circular(15)),
+                  child: Center(child: Text('Tuma',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 20),)),),
+              ),
             ),
           )
         ],
