@@ -10,6 +10,8 @@ class RipotiUhalifu extends StatefulWidget {
 }
 
 class _RipotiUhalifuState extends State<RipotiUhalifu> {
+  String _location='';
+  String _maelezo='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +42,9 @@ class _RipotiUhalifuState extends State<RipotiUhalifu> {
                     height: 10,
                   ),
                   TextFormField(
+                    onChanged: (value) {
+                      _location =value;
+                    },
                     decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderSide:
@@ -61,6 +66,9 @@ class _RipotiUhalifuState extends State<RipotiUhalifu> {
                     height: 10,
                   ),
                   TextFormField(
+                    onChanged: ((value) {
+                      _maelezo=value;
+                    }),
                     minLines: 1,
                     maxLines: 25,
                     keyboardType: TextInputType.multiline,
@@ -99,8 +107,8 @@ class _RipotiUhalifuState extends State<RipotiUhalifu> {
             ),
           ),
           InkWell(
-            onTap: () {
-              PostRipot().postreport('location', 'maelezo');
+            onTap: ()async {
+             await PostRipot().postreport(_location, _maelezo).then((value)=>Navigator.pop(context));
             },
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
