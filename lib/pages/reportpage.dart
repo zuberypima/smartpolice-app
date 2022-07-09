@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reporttopolice/pages/riportuhalifu.dart';
+import 'package:reporttopolice/services/cassefollowp.dart';
 import 'package:reporttopolice/widgets/topagebutton.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ReportPage extends StatefulWidget {
   const ReportPage({Key? key}) : super(key: key);
@@ -12,6 +14,8 @@ class ReportPage extends StatefulWidget {
 class _ReportPageState extends State<ReportPage> {
   int _phoneviewheight =100;
   int _phoneviewwidth =100;
+  final Uri _urllossreport = Uri.parse('https://lormis.tpf.go.tz/Home/Dashboard');
+   final Uri _findurl = Uri.parse('https://tms.tpf.go.tz/');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,9 +59,27 @@ class _ReportPageState extends State<ReportPage> {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>RipotiUhalifu()));
               }, child: Text('Repoti Uhalifu')),
               SizedBox(width: 10,),
-              TextButton(onPressed: () {}, child: Text('Repoti Ajali')),
+              TextButton(onPressed: () async{
+            //  await  launchUrl('');
+              }, child: Text('Repoti Ajali')),
                SizedBox(width: 10,),
-              TextButton(onPressed: () {}, child: Text('Taarifa ya Kesi yako')),
+              TextButton(onPressed: () async{
+                await launchUrl(_urllossreport);
+              }, child: Text('Loss Report')),
+            ],
+          ),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Casefollowup()));
+              }, child: Text('Taarifa ya kesi yako')),
+              SizedBox(width: 10,),
+              TextButton(onPressed: () async{
+                await launchUrl(_findurl);
+              }, child: Text('Uhakiki')),
+               SizedBox(width: 10,),
+              TextButton(onPressed: () {}, child: Text('Jifunze')),
             ],
           )
         ],
